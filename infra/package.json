@@ -2,5 +2,11 @@
   "name": "infra",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@pulumi/gcp": "^4.7.0",
+    "@pulumi/kubernetes": "^2.7.6",
+    "@pulumi/pulumi": "^2.17.2",
+    "@pulumi/random": "^3.0.1"
+  }
 }
