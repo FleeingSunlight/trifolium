@@ -4,4 +4,3 @@ namespace: argocd
 resources:
   - ./argocd-cm.yaml
   - ./argocd-ssh-known-hosts-cm.yaml
-  - ../../sealed-secrets/repository-secret.sealed.yaml
