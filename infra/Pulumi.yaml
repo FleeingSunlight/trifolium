@@ -1,0 +1,5 @@
+name: trifolium
+runtime: nodejs
+template:
+  config:
+    gcp:project:
