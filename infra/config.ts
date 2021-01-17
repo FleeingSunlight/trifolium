@@ -5,7 +5,7 @@ import * as random from "@pulumi/random";
 const config = new Config();
 
 export const nodeCount = config.getNumber("nodeCount") || 2;
-export const nodeMachineType = config.get("nodeMachineType") || "n1-standard-1";
+export const nodeMachineType = config.get("nodeMachineType") || "e2-micro";
 export const username = config.get("username") || "admin";
 export const password = new random.RandomPassword("password", {
   length: 20,

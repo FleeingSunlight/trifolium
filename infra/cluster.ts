@@ -7,25 +7,24 @@ import * as fs from "fs";
 import * as path from "path";
 import * as ejs from "ejs";
 
+const stack = pulumi.getStack();
+
 export const cluster = new gcp.container.Cluster(
-  "trifolium-cluster",
+  `trifolium-${stack}-cluster`,
   {
     initialNodeCount: 1,
     removeDefaultNodePool: true,
-    location: 'asia-southeast1-a',
+    location: "asia-southeast1-a",
     minMasterVersion: config.masterVersion,
     masterAuth: {
       username: config.username,
       password: config.password,
     },
-    masterAuthorizedNetworksConfig: {
-      cidrBlocks: [
-        { cidrBlock: vpc.subnetwork.ipCidrRange, displayName: "VPC" }
-      ],
-    },
+    // https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#all_access
+    masterAuthorizedNetworksConfig: undefined,
     ipAllocationPolicy: {},
     privateClusterConfig: {
-      enablePrivateEndpoint: true,
+      enablePrivateEndpoint: false,
       enablePrivateNodes: true,
       masterIpv4CidrBlock: "172.16.0.0/28",
     },

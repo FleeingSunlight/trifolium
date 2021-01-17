@@ -1,1 +1,2 @@
 pulumi stack export | pulumi stack import
+pulumi refresh
