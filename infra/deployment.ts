@@ -38,6 +38,6 @@ export const traefik = new k8s.helm.v3.Chart(
   },
   {
     provider: cluster.provider,
-    dependsOn: cluster.cluster,
+    dependsOn: cluster.nodePool,
   }
 );
