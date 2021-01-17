@@ -8,7 +8,7 @@ import * as path from "path";
 import * as ejs from "ejs";
 
 export const cluster = new gcp.container.Cluster(
-  "trifolium",
+  "trifolium-cluster",
   {
     initialNodeCount: 1,
     removeDefaultNodePool: true,
