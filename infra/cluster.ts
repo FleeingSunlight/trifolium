@@ -12,7 +12,7 @@ export const cluster = new gcp.container.Cluster(
   {
     initialNodeCount: 1,
     removeDefaultNodePool: true,
-    location: vpc.subnetwork.region + "-a",
+    location: 'asia-southeast1-a',
     minMasterVersion: config.masterVersion,
     masterAuth: {
       username: config.username,
