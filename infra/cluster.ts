@@ -23,8 +23,8 @@ export const cluster = new gcp.container.Cluster(
       enablePrivateNodes: true,
       masterIpv4CidrBlock: "172.16.0.0/28",
     },
-    network: vpc.network,
-    subnetwork: vpc.subnetwork,
+    network: vpc.network.selfLink,
+    subnetwork: vpc.subnetwork.selfLink,
   },
   {
     dependsOn: vpc.subnetwork,
