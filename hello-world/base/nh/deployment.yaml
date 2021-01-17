@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nh-deployment
+  labels:
+    app: nh
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nh
+  template:
+    metadata:
+      labels:
+        app: nh
+    spec:
+      containers:
+      - name: nh
+        image: nh
+        ports:
+          - containerPort: 3000
