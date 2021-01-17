@@ -19,4 +19,7 @@ export const cluster = new gcp.container.Cluster("trifolium", {
   },
   network: vpc.network,
   subnetwork: vpc.subnetwork,
+}, {
+  dependsOn: vpc.subnetwork,
+  parent: vpc.subnetwork
 });
