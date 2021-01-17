@@ -19,6 +19,8 @@
     "node": ">=10.12"
   },
   "dependencies": {
+    "@cdktf/provider-google": "^0.0.87",
+    "@cdktf/provider-kubernetes": "^0.0.95",
     "cdktf": "^0.1.0",
     "constructs": "^3.2.105"
   },
