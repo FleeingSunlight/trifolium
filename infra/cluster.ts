@@ -18,6 +18,12 @@ export const cluster = new gcp.container.Cluster(
       username: config.username,
       password: config.password,
     },
+    masterAuthorizedNetworksConfig: {
+      cidrBlocks: [
+        { cidrBlock: vpc.subnetwork.ipCidrRange, displayName: "VPC" }
+      ],
+    },
+    ipAllocationPolicy: {},
     privateClusterConfig: {
       enablePrivateEndpoint: true,
       enablePrivateNodes: true,
