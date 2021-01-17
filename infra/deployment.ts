@@ -2,7 +2,7 @@ import * as k8s from "@pulumi/kubernetes";
 import * as pulumi from "@pulumi/pulumi";
 import * as cluster from "./cluster";
 
-const traefik = new k8s.helm.v3.Chart(
+export const traefik = new k8s.helm.v3.Chart(
   "traefik",
   {
     chart: "traefik",
