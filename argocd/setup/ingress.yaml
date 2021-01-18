@@ -1,6 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
+  namespace: argocd
   name: argocd-server
 spec:
   entryPoints:
@@ -12,13 +13,5 @@ spec:
       services:
         - name: argocd-server
           port: 80
-    - kind: Rule
-      match: Host(`argocd.trifolium.fleeingsunlight.dev`) && Headers(`Content-Type`, `application/grpc`)
-      priority: 11
-      services:
-        - name: argocd-server
-          port: 80
-          scheme: h2c
   tls:
     certResolver: myresolver
-    options: {}
