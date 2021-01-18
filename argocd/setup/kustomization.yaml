@@ -4,3 +4,4 @@ namespace: argocd
 resources:
   - ./argocd-cm.yaml
   - ./argocd-ssh-known-hosts-cm.yaml
+  - ./ingress.yaml
