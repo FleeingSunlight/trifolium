@@ -42,19 +42,45 @@ const traefik = new k8s.helm.v3.Chart(
         size: "50Mi",
         path: "/data",
       },
+      deployment: {
+        initContainers: [
+          {
+            name: "volume-permissions",
+            image: "busybox:1.31.1",
+            command: ["sh", "-c", "chmod -Rv 600 /data/*"],
+            volumeMounts: [
+              {
+                name: "data",
+                mountPath: "/data"
+              }
+            ]
+          }
+        ],
+      },
       dashboard: {
         ingressRoute: true,
       },
       ports: {
+        websecure: {
+          tls: {
+            enabled: true
+          }
+        },
         traefik: {
           expose: true,
         },
+      },
+      logs: {
+        general: {
+          level: "DEBUG"
+        }
       },
       additionalArguments: [
         "--api.insecure",
         "--accesslog",
         "--entrypoints.web.Address=:8000",
-        "--entrypoints.websecure.Address=:4443",
+        "--entrypoints.websecure.Address=:8443",
+        "--providers.kubernetescrd",
         "--certificatesresolvers.myresolver.acme.tlschallenge",
         "--certificatesresolvers.myresolver.acme.email=acme@fleeingsunlight.dev",
         "--certificatesresolvers.myresolver.acme.storage=/data/acme.json",
